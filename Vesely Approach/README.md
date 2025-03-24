@@ -58,7 +58,20 @@ The issue with this approach is that the general MooN beta factor calculation as
 
 What this means is all channels are assumed to have equal probability of independent and common cause failure. The beta factor is applied uniformly across all channels. There is no weighting or differentiation between channels so a voter, a sensor, or a logic solver are all treated as functionally symmetric if included in the MooN count.
 
-Different channels may have different technologies (e.g., pressure switch vs. smart transmitter). Some may be more exposed to environmental conditions or more complex in function. One channel may be more critical or have a higher demand rate. This uniform assumption simplifies calculations but may overestimate or underestimate actual risk in non-homogeneous systems.
+We have to remeber that Vesely’s original approach is a simplified probabilistic model. It focuses purely on:
+
+- The number of redundant elements in a voting logic (N)
+- The minimum number (M) required for failure
+- The common cause failure probability β per element
+- Assumes identical components (same λ, same β)
+
+Different channels may have different technologies (e.g., pressure switch vs. smart transmitter). Some may be more exposed to environmental conditions or more complex in function. One channel may be more critical or have a higher demand rate. This assumption simplifies calculations but may overestimate or underestimate actual risk in non-homogeneous systems. Vesely did not account for:
+
+- MTTR
+- Test intervals
+- Mission time
+- Diagnostic coverage
+- Architecture differences (e.g., diverse tech, logic solvers, sensors)
 
 ## Use Cases
 - Fault Tree Analysis (FTA)
